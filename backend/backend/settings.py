@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "dev-secret")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(",")
+ALLOWED_HOSTS = os.environ.get("https://restaurant-backend-baqe.onrender.com", "localhost").split(",")
 
 
 # Application definition
@@ -40,11 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'customers',
-    'menu',
-    'orders',
-    'reports',
-    'users',
+    'backend.customers',
+    'backend.menu',
+    'backend.orders',
+    'backend.reports',
+    'backend.users',
     'rest_framework',
     'corsheaders',
     'system',
