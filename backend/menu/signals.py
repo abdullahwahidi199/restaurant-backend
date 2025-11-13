@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save,post_delete
 from django.dispatch import receiver
 from .models import Category,MenuItem,Review
-from reports.models import Notification 
+from backend.reports.models import Notification 
 
 
 @receiver(post_save,sender=Category)

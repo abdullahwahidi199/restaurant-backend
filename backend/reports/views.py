@@ -5,10 +5,10 @@ from datetime import timedelta
 from django.db.models import Sum,F,FloatField,Count
 from django.db.models.functions import TruncDate
 from django.db import models
-from users.models import Staff,Attendance
-from menu.models import MenuItem,Review
-from orders.models import Order,OrderItem
-from menu.serializers import MenuItemSerializer
+from backend.users.models import Staff,Attendance
+from backend.menu.models import MenuItem,Review
+from backend.orders.models import Order,OrderItem
+from backend.menu.serializers import MenuItemSerializer
 
 class DashboardSummaryAPIView(APIView):
     
