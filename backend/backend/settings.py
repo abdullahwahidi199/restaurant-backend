@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'backend.users',
     'rest_framework',
     'corsheaders',
-    'system',
+    'backend.system',
     'rest_framework_simplejwt.token_blacklist',
 ]
 
