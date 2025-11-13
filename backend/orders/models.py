@@ -1,6 +1,6 @@
 from django.db import models
-from backend.menu.models import MenuItem
-from backend.users.models import Staff
+from menu.models import MenuItem
+from users.models import Staff
 from django.utils import timezone
 from datetime import timedelta
 class Table(models.Model):

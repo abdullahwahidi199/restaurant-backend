@@ -1,5 +1,5 @@
 from django.db import models
-from backend.customers.models import Customer
+from customers.models import Customer
 # from orders.models import Order
 
 

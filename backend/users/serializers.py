@@ -1,7 +1,7 @@
 # users/serializers.py
 from rest_framework import serializers
 from .models import Staff,Shift,Attendance,Payroll
-from backend.orders.seriailizers import OrderMiniSerializer
+from orders.seriailizers import OrderMiniSerializer
 from django.contrib.auth.models import User
 
 

@@ -1,9 +1,9 @@
 from rest_framework import serializers
-from backend.menu.serializers import MenuItemSerializer
-from backend.customers.serializers import CustomerProfileSerializer
+from menu.serializers import MenuItemSerializer
+from customers.serializers import CustomerProfileSerializer
 from .models import OrderItem,Order,Table
-from backend.customers.models import Customer
-from backend.users.models import Staff
+from customers.models import Customer
+from users.models import Staff
 
 class OrderItemSerializer(serializers.ModelSerializer):
     item_name=serializers.ReadOnlyField(source='menu_item.name')

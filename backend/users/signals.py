@@ -3,7 +3,7 @@ from django.dispatch import receiver
 from .models import Shift,Staff,Attendance
 from django.utils import timezone
 
-from backend.reports.models import Notification 
+from reports.models import Notification 
 
 
 @receiver(post_save,sender=Shift)

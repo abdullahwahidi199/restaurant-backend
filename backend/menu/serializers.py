@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import  Category, MenuItem,Review
-from backend.customers.models import Customer
+from customers.models import Customer
 from django.utils import timezone
 
 class ReveiwMiniSerializer(serializers.ModelSerializer):

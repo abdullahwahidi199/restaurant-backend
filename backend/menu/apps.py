@@ -2,6 +2,6 @@ from django.apps import AppConfig
 
 class MenuConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'backend.menu'
+    name = 'menu'
     def ready(self):
-        import backend.menu.signals
+        import menu.signals
