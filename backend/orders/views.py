@@ -6,8 +6,8 @@ from datetime import timedelta
 from django.db.models import Q
 from .models import Order,Table,OrderItem
 from .seriailizers import OrderSerializer,TableSerializer
-from menu.models import MenuItem
-from users.models import Staff
+from backend.menu.models import MenuItem
+from backend.users.models import Staff
 from rest_framework.permissions import AllowAny
 from rest_framework.decorators import permission_classes
 @api_view(['GET', 'POST'])
