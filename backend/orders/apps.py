@@ -3,6 +3,6 @@ from django.apps import AppConfig
 
 class OrdersConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'orders'
+    name = 'backend.orders'
     def ready(self):
-        import orders.signals
+        import backend.orders.signals
