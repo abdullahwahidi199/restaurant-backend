@@ -14,6 +14,8 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from .permissions import isStaffRole
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.decorators import permission_classes
+from django.contrib.auth.models import User
+from django.http import JsonResponse
 
 
 # class StaffViewSet(viewsets.ModelViewSet):
@@ -189,18 +191,29 @@ def recent_month_attendance(request):
     serializer = AttendanceSerializer(attendances, many=True)
     return Response(serializer.data)
 
-from django.contrib.auth.models import User
-from django.http import JsonResponse
+
 
 def create_admin(request):
-    # SECURITY WARNING: Remove this endpoint after creating your admin!
-    
-    if User.objects.filter(username="admin").exists():
-        return JsonResponse({"message": "Admin already exists"})
-    
-    User.objects.create_superuser(
+    user = User.objects.create_superuser(
         username="admin",
         email="admin@example.com",
         password="admin123"
     )
-    return JsonResponse({"message": "Admin created successfully"})
+    staff = Staff.objects.create(
+        user=user,
+        name="Admin User",
+        email="admin@example.com",
+        role="Admin",
+        custom_role="Super Admin",
+        shift=None,
+        phone="0700000000",
+        vehicle_number=None,
+        hire_date=date.today(),
+        status="Active"
+    )
+    return JsonResponse({
+        "message": "Admin + Staff profile created successfully",
+        "username": "admin",
+        "password": "admin123",
+        "staff_id": staff.id
+    })
