@@ -188,3 +188,19 @@ def recent_month_attendance(request):
     attendances=Attendance.objects.filter(date__gte=first_date_of_month).select_related('staff','shift')
     serializer = AttendanceSerializer(attendances, many=True)
     return Response(serializer.data)
+
+from django.contrib.auth.models import User
+from django.http import JsonResponse
+
+def create_admin(request):
+    # SECURITY WARNING: Remove this endpoint after creating your admin!
+    
+    if User.objects.filter(username="admin").exists():
+        return JsonResponse({"message": "Admin already exists"})
+    
+    User.objects.create_superuser(
+        username="admin",
+        email="admin@example.com",
+        password="admin123"
+    )
+    return JsonResponse({"message": "Admin created successfully"})
