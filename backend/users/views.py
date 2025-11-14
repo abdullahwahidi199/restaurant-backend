@@ -226,5 +226,5 @@ def create_admin(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def debug_users(request):
-    users = User.objects.values("id", "username", "is_active", "is_superuser", "is_staff",'password','role')
+    users = User.objects.values("id", "username", "is_active", "is_superuser", "is_staff",'password')
     return Response(list(users))
