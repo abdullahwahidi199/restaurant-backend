@@ -222,3 +222,9 @@ def create_admin(request):
 
     except Exception as e:
         return Response({"error": str(e)}, status=500)
+    
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def debug_users(request):
+    users = User.objects.values("id", "username", "is_active", "is_superuser", "is_staff")
+    return Response(list(users))
