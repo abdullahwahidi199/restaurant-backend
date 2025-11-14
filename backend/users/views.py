@@ -204,13 +204,13 @@ def create_admin(request):
         user = User.objects.create_superuser(
             username="admin",
             email="admin@example.com",
-            password="Admin12345!"
+            password="admin123"
         )
 
        
         Staff.objects.create(
             user=user,
-            name="Admin",
+            name="admin",
             email="admin@example.com",
             role="Admin",
             phone="0000000000",
@@ -226,5 +226,5 @@ def create_admin(request):
 @api_view(['GET'])
 @permission_classes([AllowAny])
 def debug_users(request):
-    users = User.objects.values("id", "username", "is_active", "is_superuser", "is_staff")
+    users = User.objects.values("id", "username", "is_active", "is_superuser", "is_staff",'password','role')
     return Response(list(users))
