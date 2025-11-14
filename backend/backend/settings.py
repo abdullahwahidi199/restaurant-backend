@@ -67,8 +67,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-ROOT_URLCONF = 'backend.backend.urls'
-WSGI_APPLICATION = 'backend.backend.wsgi.application'
+ROOT_URLCONF = 'backend.urls'
+WSGI_APPLICATION = 'backend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     os.environ.get("FRONTEND_URL", "http://localhost:3000"),
@@ -96,7 +96,7 @@ TEMPLATES = [
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
+        default=os.environ.get("postgresql://db_0vhp_user:hqodlfQ1XFaGf5c1R2h2QWOu83E8FZ47@dpg-d4aus1q4d50c73ctnb0g-a.oregon-postgres.render.com/db_0vhp")
     )
 }
 
