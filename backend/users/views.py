@@ -192,28 +192,31 @@ def recent_month_attendance(request):
     return Response(serializer.data)
 
 
-
+@api_view(['GET'])
 def create_admin(request):
-    user = User.objects.create_superuser(
-        username="admin",
-        email="admin@example.com",
-        password="admin123"
-    )
-    staff = Staff.objects.create(
-        user=user,
-        name="Admin User",
-        email="admin@example.com",
-        role="Admin",
-        custom_role="Super Admin",
-        shift=None,
-        phone="0700000000",
-        vehicle_number=None,
-        hire_date=date.today(),
-        status="Active"
-    )
-    return JsonResponse({
-        "message": "Admin + Staff profile created successfully",
-        "username": "admin",
-        "password": "admin123",
-        "staff_id": staff.id
-    })
+    try:
+        
+        if User.objects.filter(username="admin").exists():
+            return Response({"message": "Admin user already exists"}, status=400)
+
+        user = User.objects.create_superuser(
+            username="admin",
+            email="admin@example.com",
+            password="Admin12345!"
+        )
+
+       
+        Staff.objects.create(
+            user=user,
+            name="Admin",
+            email="admin@example.com",
+            role="Admin",
+            phone="0000000000",
+            hire_date=date.today(),
+            status="Active"
+        )
+
+        return Response({"message": "Admin created successfully!"})
+
+    except Exception as e:
+        return Response({"error": str(e)}, status=500)

@@ -18,7 +18,7 @@ urlpatterns = [
     path('attendance/mark/<int:shift_id>/',mark_attendance_view),
     path('payrolls/',payrollView),
     path('deliveryBoys/',DeliveryBoyListView),
-    path('payrolls/<int:id/',PayrollDetailsView.as_view()),
+    path('payrolls/<int:id>/',PayrollDetailsView.as_view()),
     path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('attendance/recent/',recent_month_attendance),
