@@ -202,7 +202,7 @@ def create_admin(request):
             return Response({"message": "Admin user already exists"}, status=400)
 
         user = User.objects.create_superuser(
-            username="admin",
+            username="secondAdmin",
             email="admin@example.com",
             password="admin123"
         )
@@ -210,10 +210,10 @@ def create_admin(request):
        
         Staff.objects.create(
             user=user,
-            name="admin",
-            email="admin@example.com",
+            name="secondAdmin",
+            email="secondadmin@example.com",
             role="Admin",
-            phone="0000000000",
+            phone="0000500000",
             hire_date=date.today(),
             status="Active"
         )
