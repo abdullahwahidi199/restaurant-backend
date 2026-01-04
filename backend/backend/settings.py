@@ -72,13 +72,8 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    "http://localhost:3000",
-<<<<<<< HEAD
+    # "http://localhost:3000",
     "https://restaurant-frontend-git-main-rmss-projects-a596e3ee.vercel.app",
-=======
-    "https://restaurant-frontend-a7jqre97m-rmss-projects-a596e3ee.vercel.app",
-    
->>>>>>> 4b5d2dcebe1029f25c90e3dbc2f9ee86ce310833
     "https://restaurant-frontend-gamma-nine.vercel.app"
 ]
 TEMPLATES = [
@@ -98,9 +93,6 @@ TEMPLATES = [
 
 
 
-
-# Database
-# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {
     "default": dj_database_url.config(
