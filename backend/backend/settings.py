@@ -96,12 +96,12 @@ TEMPLATES = [
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("postgresql://db_0vhp_user:hqodlfQ1XFaGf5c1R2h2QWOu83E8FZ47@dpg-d4aus1q4d50c73ctnb0g-a.oregon-postgres.render.com/db_0vhp"),
+        default=os.environ.get("DATABASE_URL"),
         conn_max_age=600,
-        ssl_require=True
+        ssl_require=True,
+        engine="django.db.backends.postgresql",
     )
 }
-
 from datetime import timedelta
 
 SIMPLE_JWT = {
