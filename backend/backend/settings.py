@@ -72,7 +72,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
-    # "http://localhost:3000",
+    "http://localhost:3000",
     "https://restaurant-frontend-git-main-rmss-projects-a596e3ee.vercel.app",
     "https://restaurant-frontend-gamma-nine.vercel.app"
 ]
@@ -99,7 +99,9 @@ TEMPLATES = [
 
 DATABASES = {
     "default": dj_database_url.config(
-        default=os.environ.get("postgresql://db_0vhp_user:hqodlfQ1XFaGf5c1R2h2QWOu83E8FZ47@dpg-d4aus1q4d50c73ctnb0g-a.oregon-postgres.render.com/db_0vhp")
+        default=os.environ.get("postgresql://db_0vhp_user:hqodlfQ1XFaGf5c1R2h2QWOu83E8FZ47@dpg-d4aus1q4d50c73ctnb0g-a.oregon-postgres.render.com/db_0vhp"),
+        conn_max_age=600,
+        ssl_require=True
     )
 }
 
