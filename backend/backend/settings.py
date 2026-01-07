@@ -98,7 +98,7 @@ TEMPLATES = [
 
 DATABASES = {
     "default": dj_database_url.parse(
-        "postgresql://mydb_2vig_user:cM8z9IPje38p4dDpIjS9SKJG0x262FEe@dpg-d5d83tqli9vc73dd3lug-a.oregon-postgres.render.com/mydb_2vig",
+        "postgresql://mydb_2vig_user:cM8z9IPje38p4dDpIjS9SKJG0x262FEe@dpg-d5d83tqli9vc73dd3lug-a/mydb_2vig",
         conn_max_age=600,
         ssl_require=True 
     )
