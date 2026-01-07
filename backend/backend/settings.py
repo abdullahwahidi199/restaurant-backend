@@ -72,11 +72,12 @@ ROOT_URLCONF = 'backend.urls'
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",
-    # "http://localhost:3000",
+    "http://localhost:5173",  # local dev
     "https://restaurant-frontend-git-main-rmss-projects-a596e3ee.vercel.app",
-    "https://restaurant-frontend-gamma-nine.vercel.app"
+    "https://restaurant-frontend-gamma-nine.vercel.app",
+    "https://restaurant-frontend-a7jqre97m-rmss-projects-a596e3ee.vercel.app",  # new deployment
 ]
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
