@@ -12,7 +12,6 @@ class Shift(models.Model):
     def __str__(self):
         return f"{self.shift_type} - {self.start_time} to {self.end_time}"
     
-
 class Staff(models.Model):
     ROLE_CHOICES=[
         ('Admin','Admin'),
@@ -24,7 +23,6 @@ class Staff(models.Model):
         
     ]
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True, related_name='staff_profile')
-    is_demo=models.BooleanField(default=False)
     name=models.CharField(max_length=100)
     email=models.EmailField(unique=True)
     role=models.CharField(max_length=20,choices=ROLE_CHOICES)

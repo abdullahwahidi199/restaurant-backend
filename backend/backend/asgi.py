@@ -7,26 +7,17 @@ For more information on this file, see
 https://docs.djangoproject.com/en/5.2/howto/deployment/asgi/
 """
 
-# backend/asgi.py  (update path to your project name if different)
 import os
-import django
-from channels.routing import ProtocolTypeRouter, URLRouter
 from django.core.asgi import get_asgi_application
+from channels.routing import ProtocolTypeRouter, URLRouter
 from channels.auth import AuthMiddlewareStack
-import orders.routing  # we'll create this file
+import orders.routing
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "backend.settings")
-django.setup()
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'backend.settings')
 
-django_asgi_app = get_asgi_application()
-
-application = ProtocolTypeRouter(
-    {
-        "http": django_asgi_app,
-        "websocket": AuthMiddlewareStack(  # optional auth middleware
-            URLRouter(
-                orders.routing.websocket_urlpatterns
-            )
-        ),
-    }
-)
+application = ProtocolTypeRouter({
+    "http": get_asgi_application(),
+    "websocket": AuthMiddlewareStack(
+        URLRouter(orders.routing.websocket_urlpatterns)
+    ),
+})

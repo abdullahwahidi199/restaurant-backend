@@ -15,7 +15,6 @@ import os
 from pathlib import Path
 import dj_database_url
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -72,12 +71,11 @@ ROOT_URLCONF = 'backend.urls'
 WSGI_APPLICATION = 'backend.wsgi.application'
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # local dev
-    "https://restaurant-frontend-git-main-rmss-projects-a596e3ee.vercel.app",
-    "https://restaurant-frontend-gamma-nine.vercel.app",
-    "https://restaurant-frontend-a7jqre97m-rmss-projects-a596e3ee.vercel.app",  # new deployment
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "https://restaurant-frontend-a7jqre97m-rmss-projects-a596e3ee.vercel.app",
+    "https://restaurant-frontend-gamma-nine.vercel.app"
 ]
-
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -96,11 +94,12 @@ TEMPLATES = [
 
 
 
+# Database
+# https://docs.djangoproject.com/en/5.2/ref/settings/#databases
+
 DATABASES = {
-    "default": dj_database_url.parse(
-        "postgresql://mydb_2vig_user:cM8z9IPje38p4dDpIjS9SKJG0x262FEe@dpg-d5d83tqli9vc73dd3lug-a/mydb_2vig",
-        conn_max_age=600,
-        ssl_require=True 
+    "default": dj_database_url.config(
+        default=os.environ.get("postgresql://mydb_2vig_user:cM8z9IPje38p4dDpIjS9SKJG0x262FEe@dpg-d5d83tqli9vc73dd3lug-a.oregon-postgres.render.com/mydb_2vig")
     )
 }
 

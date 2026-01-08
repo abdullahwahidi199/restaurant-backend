@@ -16,8 +16,6 @@ def category_list_create(request):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'POST':
-        if request.user.staff_profile.is_demo:
-            return Response({"detail":"Action is restricted in demo mode"},status=403)
         serializer = CategorySerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -30,15 +28,6 @@ class CategoryRetrieveDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Category.objects.prefetch_related('menu_items').all()
     serializer_class = CategorySerializer
 
-    def update(self, request, *args, **kwargs):
-        if request.user.staff_profile.is_demo:
-            return Response({'detail': 'Action restricted in demo mode.'}, status=403)
-        return super().update(request, *args, **kwargs)
-    def destroy(self, request, *args, **kwargs):
-        if request.user.staff_profile.is_demo:
-            return Response({'detail': 'Action restricted in demo mode.'}, status=403)
-        return super().destroy(request, *args, **kwargs)
-
 
 @api_view(['GET','POST'])
 @permission_classes([AllowAny])
@@ -48,8 +37,6 @@ def menu_item_list_create_view(request):
         serializer=MenuItemSerializer(menu_items,many=True)
         return Response(serializer.data)
     elif request.method=="POST":
-        if request.user.staff_profile.is_demo:
-            return Response({"detail":"Action is restricted in demo mode"},status=403)
         serializer=MenuItemSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
@@ -59,16 +46,6 @@ def menu_item_list_create_view(request):
 class MenuItemRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = MenuItem.objects.prefetch_related('reviews')
     serializer_class = MenuItemSerializer
-
-    def update(self, request, *args, **kwargs):
-        if request.user.staff_profile.is_demo:
-            return Response({'detail': 'Action restricted in demo mode.'}, status=403)
-        return super().update(request, *args, **kwargs)
-    def destroy(self, request, *args, **kwargs):
-        if request.user.staff_profile.is_demo:
-            return Response({'detail': 'Action restricted in demo mode.'}, status=403)
-        return super().destroy(request, *args, **kwargs)
-
 
 
 @api_view(['GET',"POST"])
